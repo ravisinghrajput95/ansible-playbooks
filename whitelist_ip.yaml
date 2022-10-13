@@ -1,0 +1,10 @@
+---
+- name: whitelist web2 node's ip address
+  hosts: all
+  gather_facts: no
+  tasks: 
+  - name: whitelist 172.20.1.101
+    firewalld:
+      source: 172.20.1.101
+      zone: internal
+      state: enabled

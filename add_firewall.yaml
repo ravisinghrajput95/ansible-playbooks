@@ -1,0 +1,16 @@
+---
+- name: add firewall rule in internal zone
+  hosts: all
+  gather_facts: no
+  tasks: 
+  - name: enable https connection from ansible controller
+    firewalld: 
+      source: 172.20.1.2
+      state: enabled
+      zone: internal
+      service: https
+      permanent: yes
+  - name: reload service
+    service: 
+      name: firewalld
+      state: reloaded 

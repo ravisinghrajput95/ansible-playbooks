@@ -1,0 +1,12 @@
+---
+- name: block 161/udp port on web1 node permanently
+  hosts: all
+  gather_facts: no
+  tasks: 
+  - name: block 161 udp port on web1 node
+    firewalld: 
+      port: 161/udp
+      state: enabled
+      permanent: yes
+      immediate: yes
+      zone: block
