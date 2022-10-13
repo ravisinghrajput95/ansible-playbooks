@@ -1,0 +1,11 @@
+---
+- name: download and extract zip file
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+  - name: download
+    unarchive:
+       src:  https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-large-zip-file.zip
+       dest: /root
+       remote_src: yes

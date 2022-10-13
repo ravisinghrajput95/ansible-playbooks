@@ -1,0 +1,9 @@
+---
+- name: extract local.zip file under /tmp directory on web1 node
+  gather_facts: no
+  hosts: web1
+  tasks: 
+  - name: extract local.zip file under /tmp directory on web1 node
+    unarchive:
+      src: local.zip
+      dest: /tmp

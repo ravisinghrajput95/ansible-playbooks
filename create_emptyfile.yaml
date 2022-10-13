@@ -1,0 +1,8 @@
+---
+- name: Create a blank file on web1 node
+  hosts: web1
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: create a file called perm.txt
+    file: name=/opt/data/perm.txt mode=0640 state=touch

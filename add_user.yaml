@@ -1,0 +1,9 @@
+---
+- name: add user 
+  gather_facts: no
+  hosts: all
+  tasks:
+  - name: add user
+    user: 
+      name: neymarsabin
+      expires: 1704067199

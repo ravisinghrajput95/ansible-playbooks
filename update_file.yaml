@@ -1,0 +1,10 @@
+---
+- name: Update default index.html file
+  hosts: web1
+  gather_facts: no
+  tasks:
+  - name: update file
+    lineinfile:
+      path: /var/www/html/index.html
+      line: This line was added using Ansible lineinfile module!
+      create: yes

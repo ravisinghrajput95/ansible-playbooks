@@ -1,0 +1,13 @@
+---
+- name: keep all installed package up to date.
+  hosts: node00
+  tasks: 
+  - name: regularly run yum updates
+    cron: 
+      name: yum update
+      weekday: "0"
+      hour: "8"
+      minute: "5"
+      user: root
+      job: "yum -y update"
+      cron_file: ansible_yum

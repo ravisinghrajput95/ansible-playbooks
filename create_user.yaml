@@ -1,0 +1,13 @@
+---
+- name: create user 
+  hosts: all
+  tasks: 
+  - name: create group named admin
+    group: 
+      name: admin
+      state: present
+  - name: create user named admin
+    user: 
+      name: admin
+      uid: 2048
+      group: admin

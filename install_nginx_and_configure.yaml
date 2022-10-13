@@ -1,0 +1,28 @@
+---
+- name: Nginx installation and configuration on remote nodes
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+  - name: setup nginx
+    yum:
+       name: nginx
+       state: present
+  
+  - name: start  nginx
+    service: name=nginx state=started enabled=yes
+ 
+  - name: extract zip under nginx directory
+    unarchive: 
+      src: /root/nginx.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+
+  - name: replace default content in index.html
+    replace:
+      path: /usr/share/nginx/html/index.html
+      regexp: 'This is sample html code'
+      replace: 'This is Ansible lab'
+
+  - name: reload nginx
+    service: name=nginx state=reloaded	

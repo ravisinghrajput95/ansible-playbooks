@@ -1,0 +1,11 @@
+---
+- name: archive /opt directory on web1 node
+  gather_facts: no
+  hosts: web1
+  become: yes
+  tasks: 
+  - name: archive directory
+    archive: 
+      path: /opt
+      dest: /root/opt.zip
+      format: zip

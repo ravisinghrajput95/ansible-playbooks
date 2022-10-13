@@ -1,0 +1,15 @@
+---
+- name: change port in httpd.conf
+  gather_facts: no
+  hosts: web1
+  tasks: 
+  - name: change port 80 to 8080 in httpd configuration file
+    replace: 
+      path: /etc/httpd/conf/httpd.conf
+      regexp: 'Listen 80'
+      replace: 'Listen 8080'
+   
+  - name: restart httpd
+    service: 
+      name: httpd
+      state: restarted
